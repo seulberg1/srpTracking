@@ -1,5 +1,6 @@
 package srpTracking;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -8,11 +9,17 @@ import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JButton;
+import java.awt.Color;
 
 public class WindowLesson {
 
 	private JFrame frame;
+	private JTable eintraegetabelle;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -36,6 +43,8 @@ public class WindowLesson {
 		//Create the main Frame (muhaha, such sophistication)
 		
 		frame = new JFrame();
+		frame.getContentPane().setForeground(Color.ORANGE);
+		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setBounds(100, 100, 1000, 525);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -197,5 +206,43 @@ public class WindowLesson {
 		lblRaum.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblRaum.setBounds(730, 110, 110, 40);
 		frame.getContentPane().add(lblRaum);
+		
+		//create Table inside JPane to show last 3 entries
+		
+		eintraegetabelle = new JTable();
+		eintraegetabelle.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"Stufe", "Zweig", "Klasse", "Fach", "Stunden", "Lehrer", "Raum"
+			}
+		));
+		eintraegetabelle.getColumnModel().getColumn(0).setPreferredWidth(119);
+		eintraegetabelle.getColumnModel().getColumn(1).setPreferredWidth(119);
+		eintraegetabelle.getColumnModel().getColumn(2).setPreferredWidth(119);
+		eintraegetabelle.getColumnModel().getColumn(3).setPreferredWidth(119);
+		eintraegetabelle.getColumnModel().getColumn(4).setPreferredWidth(119);
+		eintraegetabelle.getColumnModel().getColumn(5).setPreferredWidth(119);
+		eintraegetabelle.getColumnModel().getColumn(6).setPreferredWidth(119);
+		eintraegetabelle.setBounds(10, 220, 833, 75);
+		eintraegetabelle.getTableHeader().setPreferredSize(new Dimension(119,25));
+		eintraegetabelle.setRowHeight(0,25);
+		eintraegetabelle.setRowHeight(1,25);
+		eintraegetabelle.setRowHeight(2,25);
+		eintraegetabelle.setFillsViewportHeight(true);
+		
+		JScrollPane scrollPane = new JScrollPane(eintraegetabelle);
+		scrollPane.setBounds(10, 210, 833, 100);
+		
+		frame.getContentPane().add(scrollPane);
+		
+		JButton btnNewButton = new JButton("Add");
+		btnNewButton.setForeground(Color.BLACK);
+		btnNewButton.setBackground(Color.ORANGE);
+		btnNewButton.setBounds(850, 157, 90, 26);
+		frame.getContentPane().add(btnNewButton);
 	}
 }
