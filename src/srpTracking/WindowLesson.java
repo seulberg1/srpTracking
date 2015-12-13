@@ -39,6 +39,7 @@ public class WindowLesson {
 		});
 		//Initialize Connection
 		DatabaseConnector verbinder1 = new DatabaseConnector();
+		verbinder1.insert("12,'Gym',3,'Mathe',4,'Kaps','Normal');");
 	}
 
 	public WindowLesson() {
