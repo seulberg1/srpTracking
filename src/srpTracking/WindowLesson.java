@@ -18,10 +18,7 @@ import java.awt.Color;
 
 //DB Connector import
 import java.sql.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+
 import org.h2.tools.DeleteDbFiles;
 
 public class WindowLesson {
@@ -29,7 +26,7 @@ public class WindowLesson {
 	private JFrame frame;
 	private JTable eintraegetabelle;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -40,6 +37,8 @@ public class WindowLesson {
 				}
 			}
 		});
+		//Initialize Connection
+		DatabaseConnector verbinder1 = new DatabaseConnector();
 	}
 
 	public WindowLesson() {
