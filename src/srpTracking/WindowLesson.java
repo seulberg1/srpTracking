@@ -54,7 +54,7 @@ public class WindowLesson {
 		JLabel lblStundenplanToolPrs = new JLabel("StundenPlan Tool PRS");
 		lblStundenplanToolPrs.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
 		lblStundenplanToolPrs.setHorizontalAlignment(SwingConstants.CENTER);
-		lblStundenplanToolPrs.setBounds(187, 13, 342, 60);
+		lblStundenplanToolPrs.setBounds(370, 10, 260, 60);
 		frame.getContentPane().add(lblStundenplanToolPrs);
 		
 		//Create ComboBox Class Level and Action Listener
@@ -62,13 +62,14 @@ public class WindowLesson {
 		Integer[] stufenMoeglichkeiten = {5,6,7,8,9,10,11,12,13};
 		
 		JComboBox comboBoxStufe = new JComboBox(stufenMoeglichkeiten);
-		comboBoxStufe.setBounds(10, 150, 110, 40);
-		comboBoxStufe.addActionListener(new ActionListener(){
+		comboBoxStufe.setBounds(12, 118, 110, 40);
+		/* old action listener, deleted for all other buttons
+		 * comboBoxStufe.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				Integer stufenWert = (Integer)comboBoxStufe.getSelectedItem();
 	            System.out.println(stufenWert);
 			}
-		});
+		});*/
 		frame.getContentPane().add(comboBoxStufe);
 		
 		
@@ -77,13 +78,7 @@ public class WindowLesson {
 		String [] zweigMoeglichkeiten = {"Haupt","Real","Gym","Ober"};
 		
 		JComboBox comboBoxZweig = new JComboBox(zweigMoeglichkeiten);
-		comboBoxZweig.setBounds(130, 150, 110, 40);
-		comboBoxZweig.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				String zweigWert = (String)comboBoxZweig.getSelectedItem();
-	            System.out.println(zweigWert);
-			}
-		});
+		comboBoxZweig.setBounds(132, 118, 110, 40);
 		frame.getContentPane().add(comboBoxZweig);
 		
 		//Create ComboBox to specify the class more and Action Listener
@@ -91,13 +86,7 @@ public class WindowLesson {
 		Integer[] klassenMoeglichkeiten = {1,2,3,4,5,6,7,8,9};
 		
 		JComboBox comboBoxKlasse = new JComboBox(klassenMoeglichkeiten);
-		comboBoxKlasse.setBounds(250, 150, 110, 40);
-		comboBoxKlasse.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				Integer klassenWert = (Integer)comboBoxKlasse.getSelectedItem();
-	            System.out.println(klassenWert);
-			}
-		});
+		comboBoxKlasse.setBounds(252, 118, 110, 40);
 		frame.getContentPane().add(comboBoxKlasse);
 		
 		//Create ComboBox to specify the subject and Action Listener
@@ -105,13 +94,7 @@ public class WindowLesson {
 		String [] fachMoeglichkeiten = {"Deutsch","Mathe","Geschichte","PW","Leben"};
 		
 		JComboBox comboBoxFach = new JComboBox(fachMoeglichkeiten);
-		comboBoxFach.setBounds(370, 150, 110, 40);
-		comboBoxFach.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				String fachWert = (String)comboBoxFach.getSelectedItem();
-	            System.out.println(fachWert);
-			}
-		});
+		comboBoxFach.setBounds(372, 118, 110, 40);
 		frame.getContentPane().add(comboBoxFach);
 		
 		//Create ComboBox to specify the amount of hours the subject is thought per week and Action Listener
@@ -119,13 +102,7 @@ public class WindowLesson {
 		Integer[] stundenMoeglichkeiten = {1,2,3,4,5,6};
 		
 		JComboBox comboBoxStunden = new JComboBox(stundenMoeglichkeiten);
-		comboBoxStunden.setBounds(490, 150, 110, 40);
-		comboBoxStunden.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				Integer stundenWert = (Integer)comboBoxStunden.getSelectedItem();
-	            System.out.println(stundenWert);
-			}
-		});
+		comboBoxStunden.setBounds(492, 118, 110, 40);
 		frame.getContentPane().add(comboBoxStunden);
 		
 		//Create ComboBox to specify the teacher's name and Action Listener
@@ -133,27 +110,15 @@ public class WindowLesson {
 		String [] lehrerMoeglichkeiten = {"Kaps","Boegel","Schilling","Dreseler"};
 		
 		JComboBox comboBoxLehrer = new JComboBox(lehrerMoeglichkeiten);
-		comboBoxLehrer.setBounds(610, 150, 110, 40);
-		comboBoxLehrer.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				String lehrerWert = (String)comboBoxLehrer.getSelectedItem();
-	            System.out.println(lehrerWert);
-			}
-		});
+		comboBoxLehrer.setBounds(612, 118, 110, 40);
 		frame.getContentPane().add(comboBoxLehrer);
-		//
+
 		//Create ComboBox to specify room type and Action Listener
 		
 		String [] raumMoeglichkeiten = {"Normal","Bio","Chemie","Musik", "Sport","Kunst"};
 		
 		JComboBox comboBoxRaum = new JComboBox(raumMoeglichkeiten);
-		comboBoxRaum.setBounds(730, 150, 110, 40);
-		comboBoxRaum.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				String raumWert = (String)comboBoxRaum.getSelectedItem();
-	            System.out.println(raumWert);
-			}
-		});
+		comboBoxRaum.setBounds(732, 118, 110, 40);
 		frame.getContentPane().add(comboBoxRaum);
 		
 		
@@ -162,54 +127,60 @@ public class WindowLesson {
 		lblNewLabel.setToolTipText("Klassenstufe 5-13 eingeben");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(10, 110, 110, 40);
+		lblNewLabel.setBounds(12, 78, 110, 40);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblZweig = new JLabel("Zweig");
 		lblZweig.setToolTipText("Zweig ausw\u00E4hlen");
 		lblZweig.setHorizontalAlignment(SwingConstants.CENTER);
 		lblZweig.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblZweig.setBounds(130, 110, 110, 40);
+		lblZweig.setBounds(132, 78, 110, 40);
 		frame.getContentPane().add(lblZweig);
 		
 		JLabel lblSprache = new JLabel("Klasse");
 		lblSprache.setToolTipText("Welche Klasse im Zweig?");
 		lblSprache.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSprache.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblSprache.setBounds(250, 110, 110, 40);
+		lblSprache.setBounds(252, 78, 110, 40);
 		frame.getContentPane().add(lblSprache);
 		
 		JLabel lblFach = new JLabel("Fach");
 		lblFach.setToolTipText("Unterrichtsfach ausw\u00E4hlen");
 		lblFach.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFach.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblFach.setBounds(370, 110, 110, 40);
+		lblFach.setBounds(372, 78, 110, 40);
 		frame.getContentPane().add(lblFach);
 		
 		JLabel lblStunden = new JLabel("Stunden");
 		lblStunden.setToolTipText("Anzahl Wochenstundenausw\u00E4hlen");
 		lblStunden.setHorizontalAlignment(SwingConstants.CENTER);
 		lblStunden.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblStunden.setBounds(490, 110, 110, 40);
+		lblStunden.setBounds(492, 78, 110, 40);
 		frame.getContentPane().add(lblStunden);
 		
 		JLabel lblLehrer = new JLabel("Lehrer");
 		lblLehrer.setToolTipText("Lehrer ausw\u00E4hlen");
 		lblLehrer.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLehrer.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblLehrer.setBounds(610, 110, 110, 40);
+		lblLehrer.setBounds(612, 78, 110, 40);
 		frame.getContentPane().add(lblLehrer);
 		
 		JLabel lblRaum = new JLabel("Raum");
 		lblRaum.setToolTipText("Raumtyp ausw\u00E4hlen");
 		lblRaum.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRaum.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblRaum.setBounds(730, 110, 110, 40);
+		lblRaum.setBounds(732, 78, 110, 40);
 		frame.getContentPane().add(lblRaum);
 		
 		//create Table inside JPane to show last 3 entries
 		
-		eintraegetabelle = new JTable();
+		eintraegetabelle = new JTable(){
+			//Cell values are not editable
+			public boolean isCellEditable(int row, int column){  
+		          return false;  
+		      }
+		};
+		eintraegetabelle.setRowSelectionAllowed(false);
 		eintraegetabelle.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null, null, null, null},
@@ -235,14 +206,25 @@ public class WindowLesson {
 		eintraegetabelle.setFillsViewportHeight(true);
 		
 		JScrollPane scrollPane = new JScrollPane(eintraegetabelle);
-		scrollPane.setBounds(10, 210, 833, 100);
+		scrollPane.setBounds(12, 178, 833, 100);
 		
 		frame.getContentPane().add(scrollPane);
 		
-		JButton btnNewButton = new JButton("Add");
-		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setBackground(Color.ORANGE);
-		btnNewButton.setBounds(850, 157, 90, 26);
-		frame.getContentPane().add(btnNewButton);
+		JButton hinzufuegenButton = new JButton("Add");
+		hinzufuegenButton.setForeground(Color.BLACK);
+		hinzufuegenButton.setBackground(Color.ORANGE);
+		hinzufuegenButton.setBounds(852, 125, 90, 26);
+		hinzufuegenButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+	            eintraegetabelle.setValueAt(comboBoxStufe.getSelectedItem(),0,0);
+	            eintraegetabelle.setValueAt(comboBoxZweig.getSelectedItem(),0,1);
+	            eintraegetabelle.setValueAt(comboBoxKlasse.getSelectedItem(),0,2);
+	            eintraegetabelle.setValueAt(comboBoxFach.getSelectedItem(),0,3);
+	            eintraegetabelle.setValueAt(comboBoxStunden.getSelectedItem(),0,4);
+	            eintraegetabelle.setValueAt(comboBoxLehrer.getSelectedItem(),0,5);
+	            eintraegetabelle.setValueAt(comboBoxRaum.getSelectedItem(),0,6);
+			}
+		});
+		frame.getContentPane().add(hinzufuegenButton);
 	}
 }
