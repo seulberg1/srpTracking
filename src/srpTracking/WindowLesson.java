@@ -16,11 +16,13 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import java.awt.Color;
 
+
+
 //DB Connector import
 import java.sql.*;
-import java.util.ArrayList;
-
+import org.h2.*;
 import org.h2.tools.DeleteDbFiles;
+
 
 public class WindowLesson {
 
@@ -41,11 +43,11 @@ public class WindowLesson {
 		
 	}
 
-	public WindowLesson() {
+	public WindowLesson() throws ClassNotFoundException, SQLException {
 		initialize();
 	}
 
-	private void initialize() {
+	private void initialize() throws ClassNotFoundException, SQLException {
 
 		// Create the main Frame (muhaha, such sophistication)
 
@@ -65,7 +67,10 @@ public class WindowLesson {
 		frame.getContentPane().add(lblStundenplanToolPrs);
 
 		// Create ComboBox Class Level and Action Listener
-
+		// Create DB Query for the DropDownContent
+		DatabaseConnector dropDownConnect = new DatabaseConnector();
+		String [] lehrerMoeglichkeiten = dropDownConnect.queryresultsfordropdown("lehrer","nachname");
+		
 		Integer[] stufenMoeglichkeiten = { 5, 6, 7, 8, 9, 10, 11, 12, 13 };
 
 		JComboBox comboBoxStufe = new JComboBox(stufenMoeglichkeiten);
@@ -96,7 +101,7 @@ public class WindowLesson {
 		frame.getContentPane().add(comboBoxKlasse);
 
 		// Create ComboBox to specify the subject and Action Listener
-
+		
 		String[] fachMoeglichkeiten = { "Deutsch", "Mathe", "Geschichte", "PW", "Leben" };
 
 		JComboBox comboBoxFach = new JComboBox(fachMoeglichkeiten);
@@ -114,8 +119,8 @@ public class WindowLesson {
 
 		// Create ComboBox to specify the teacher's name and Action Listener
 
-		String[] lehrerMoeglichkeiten = { "Kaps", "Boegel", "Schilling", "Dreseler" };
-
+		//String[] lehrerMoeglichkeiten = { "Kaps", "Boegel", "Schilling", "Dreseler" };
+		
 		JComboBox comboBoxLehrer = new JComboBox(lehrerMoeglichkeiten);
 		comboBoxLehrer.setBounds(612, 118, 110, 40);
 		frame.getContentPane().add(comboBoxLehrer);
@@ -226,13 +231,13 @@ public class WindowLesson {
 				String wertRaum = (String)comboBoxRaum.getSelectedItem();
 				
 				//Connect to DATABASE
-				DatabaseConnector verbinder1;
+				//DatabaseConnector dropDownConnect;
 				try {
-					verbinder1 = new DatabaseConnector();
+					//dropDownConnect = new DatabaseConnector();
 				//ADD current values to DB
-					verbinder1.insert(""+wertStufe+",'"+wertZweig+"',"+wertKlasse+",'"+wertFach+"',"+wertStunden+",'"+wertLehrer+"','"+wertRaum+"');");
+					dropDownConnect.insert(""+wertStufe+",'"+wertZweig+"',"+wertKlasse+",'"+wertFach+"',"+wertStunden+",'"+wertLehrer+"','"+wertRaum+"');");
 				//Show last 3 DB entries
-					String[][] queryErgebnis = verbinder1.retrieveForTable();
+					String[][] queryErgebnis = dropDownConnect.retrieveForTable();
 					for(int r=0;r<3;r++){
 						//Starts at 1, cause I dont want to confuse ppl with the ID form the DB
 						for(int c=1;c<8;c++){
@@ -245,7 +250,7 @@ public class WindowLesson {
 				eintraegetabelle.setValueAt(comboBoxFach.getSelectedItem(), 0, 3);
 				eintraegetabelle.setValueAt(comboBoxStunden.getSelectedItem(), 0, 4);
 				eintraegetabelle.setValueAt(comboBoxLehrer.getSelectedItem(), 0, 5);
-				*/eintraegetabelle.setValueAt(comboBoxRaum.getSelectedItem(), 0, 6);
+				*/
 				} catch (ClassNotFoundException | SQLException e1) {
 					e1.printStackTrace();
 				}
