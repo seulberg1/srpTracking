@@ -69,24 +69,16 @@ public class WindowLesson {
 		// Create ComboBox Class Level and Action Listener
 		// Create DB Query for the DropDownContent
 		DatabaseConnector dropDownConnect = new DatabaseConnector();
-		String [] lehrerMoeglichkeiten = dropDownConnect.queryresultsfordropdown("lehrer","nachname");
 		
-		Integer[] stufenMoeglichkeiten = { 5, 6, 7, 8, 9, 10, 11, 12, 13 };
+		String[] stufenMoeglichkeiten = dropDownConnect.queryresultsfordropdown("STUFE", "STUFE");
 
 		JComboBox comboBoxStufe = new JComboBox(stufenMoeglichkeiten);
 		comboBoxStufe.setBounds(12, 118, 110, 40);
-		/*
-		 * old action listener, deleted for all other buttons
-		 * comboBoxStufe.addActionListener(new ActionListener(){ public void
-		 * actionPerformed(ActionEvent e){ Integer stufenWert =
-		 * (Integer)comboBoxStufe.getSelectedItem();
-		 * System.out.println(stufenWert); } });
-		 */
 		frame.getContentPane().add(comboBoxStufe);
 
 		// Create ComboBox Class School Type and Action Listener
 
-		String[] zweigMoeglichkeiten = { "Haupt", "Real", "Gym", "Ober" };
+		String[] zweigMoeglichkeiten = dropDownConnect.queryresultsfordropdown("ZWEIG", "ZWEIG");
 
 		JComboBox comboBoxZweig = new JComboBox(zweigMoeglichkeiten);
 		comboBoxZweig.setBounds(132, 118, 110, 40);
@@ -94,7 +86,7 @@ public class WindowLesson {
 
 		// Create ComboBox to specify the class more and Action Listener
 
-		Integer[] klassenMoeglichkeiten = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		String[] klassenMoeglichkeiten = dropDownConnect.queryresultsfordropdown("KLASSE", "KLASSE");
 
 		JComboBox comboBoxKlasse = new JComboBox(klassenMoeglichkeiten);
 		comboBoxKlasse.setBounds(252, 118, 110, 40);
@@ -102,8 +94,8 @@ public class WindowLesson {
 
 		// Create ComboBox to specify the subject and Action Listener
 		
-		String[] fachMoeglichkeiten = { "Deutsch", "Mathe", "Geschichte", "PW", "Leben" };
-
+		String[] fachMoeglichkeiten = dropDownConnect.queryresultsfordropdown("FACH", "FACH");
+		
 		JComboBox comboBoxFach = new JComboBox(fachMoeglichkeiten);
 		comboBoxFach.setBounds(372, 118, 110, 40);
 		frame.getContentPane().add(comboBoxFach);
@@ -111,15 +103,15 @@ public class WindowLesson {
 		// Create ComboBox to specify the amount of hours the subject is thought
 		// per week and Action Listener
 
-		Integer[] stundenMoeglichkeiten = { 1, 2, 3, 4, 5, 6 };
+		String[] stundenMoeglichkeiten = dropDownConnect.queryresultsfordropdown("STUNDE", "STUNDE");
 
 		JComboBox comboBoxStunden = new JComboBox(stundenMoeglichkeiten);
 		comboBoxStunden.setBounds(492, 118, 110, 40);
 		frame.getContentPane().add(comboBoxStunden);
 
 		// Create ComboBox to specify the teacher's name and Action Listener
-
-		//String[] lehrerMoeglichkeiten = { "Kaps", "Boegel", "Schilling", "Dreseler" };
+		
+		String [] lehrerMoeglichkeiten = dropDownConnect.queryresultsfordropdown("LEHRER","NACHNAME");
 		
 		JComboBox comboBoxLehrer = new JComboBox(lehrerMoeglichkeiten);
 		comboBoxLehrer.setBounds(612, 118, 110, 40);
@@ -127,7 +119,7 @@ public class WindowLesson {
 
 		// Create ComboBox to specify room type and Action Listener
 
-		String[] raumMoeglichkeiten = { "Normal", "Bio", "Chemie", "Musik", "Sport", "Kunst" };
+		String[] raumMoeglichkeiten = dropDownConnect.queryresultsfordropdown("RAUM", "RAUM");
 
 		JComboBox comboBoxRaum = new JComboBox(raumMoeglichkeiten);
 		comboBoxRaum.setBounds(732, 118, 110, 40);
@@ -222,11 +214,11 @@ public class WindowLesson {
 		hinzufuegenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Save selected values in variables
-				Integer wertStufe = (Integer)comboBoxStufe.getSelectedItem();
+				String wertStufe = (String)comboBoxStufe.getSelectedItem();
 				String wertZweig = (String)comboBoxZweig.getSelectedItem();
-				Integer wertKlasse = (Integer)comboBoxKlasse.getSelectedItem();
+				String wertKlasse = (String)comboBoxKlasse.getSelectedItem();
 				String wertFach = (String)comboBoxFach.getSelectedItem();
-				Integer wertStunden = (Integer)comboBoxStunden.getSelectedItem();
+				String wertStunden = (String)comboBoxStunden.getSelectedItem();
 				String wertLehrer = (String)comboBoxLehrer.getSelectedItem();
 				String wertRaum = (String)comboBoxRaum.getSelectedItem();
 				

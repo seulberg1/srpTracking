@@ -69,7 +69,7 @@ public class DatabaseConnector {
 		return queryErgebniss;
 	}
 
-	/*public String[] queryresultsfordropdown()
+	public String[] queryresultsfordropdown(String tablename, String columnname)
 			throws ClassNotFoundException, SQLException {
 		// Get Connection
 		Class.forName("org.h2.Driver");
@@ -80,7 +80,7 @@ public class DatabaseConnector {
 		ResultSet rs;
 
 		// Query the all last names of teachers
-		rs = stat.executeQuery("SELECT nachname FROM lehrer ORDER BY nachname ASC");
+		rs = stat.executeQuery("SELECT "+ columnname +" FROM " +tablename+ " ORDER BY "+ columnname +" ASC");
 
 		int count = 0;
 		while (rs.next()) {
@@ -100,5 +100,5 @@ public class DatabaseConnector {
 		conn.close();
 
 		return queryErgebniss;
-	}*/
+	}
 }
