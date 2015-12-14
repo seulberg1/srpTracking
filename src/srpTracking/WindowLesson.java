@@ -231,7 +231,14 @@ public class WindowLesson {
 					verbinder1 = new DatabaseConnector();
 				//ADD current values to DB
 					verbinder1.insert(""+wertStufe+",'"+wertZweig+"',"+wertKlasse+",'"+wertFach+"',"+wertStunden+",'"+wertLehrer+"','"+wertRaum+"');");
-					verbinder1.retrieveForTable();
+				//Show last 3 DB entries
+					String[][] queryErgebnis = verbinder1.retrieveForTable();
+					for(int r=0;r<3;r++){
+						//Starts at 1, cause I dont want to confuse ppl with the ID form the DB
+						for(int c=1;c<8;c++){
+							eintraegetabelle.setValueAt(queryErgebnis[r][c], r, c-1);
+						}
+					}
 					/*eintraegetabelle.setValueAt(comboBoxStufe.getSelectedItem(), 0, 0);
 				eintraegetabelle.setValueAt(comboBoxZweig.getSelectedItem(), 0, 1);
 				eintraegetabelle.setValueAt(comboBoxKlasse.getSelectedItem(), 0, 2);
