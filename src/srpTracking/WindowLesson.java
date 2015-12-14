@@ -18,6 +18,7 @@ import java.awt.Color;
 
 //DB Connector import
 import java.sql.*;
+import java.util.ArrayList;
 
 import org.h2.tools.DeleteDbFiles;
 
@@ -216,11 +217,11 @@ public class WindowLesson {
 		hinzufuegenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Save selected values in variables
-				String wertStufe = (String)comboBoxStufe.getSelectedItem();
+				Integer wertStufe = (Integer)comboBoxStufe.getSelectedItem();
 				String wertZweig = (String)comboBoxZweig.getSelectedItem();
-				String wertKlasse = (String)comboBoxKlasse.getSelectedItem();
+				Integer wertKlasse = (Integer)comboBoxKlasse.getSelectedItem();
 				String wertFach = (String)comboBoxFach.getSelectedItem();
-				String wertStunden = (String)comboBoxStunden.getSelectedItem();
+				Integer wertStunden = (Integer)comboBoxStunden.getSelectedItem();
 				String wertLehrer = (String)comboBoxLehrer.getSelectedItem();
 				String wertRaum = (String)comboBoxRaum.getSelectedItem();
 				
@@ -229,17 +230,18 @@ public class WindowLesson {
 				try {
 					verbinder1 = new DatabaseConnector();
 				//ADD current values to DB
-					verbinder1.insert(wertStufe+",'"+wertZweig+"',"+wertKlasse+",'"+wertFach+"',"+wertStunden+",'"+wertLehrer+"','"+wertRaum+"');");
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
-				}
-				eintraegetabelle.setValueAt(comboBoxStufe.getSelectedItem(), 0, 0);
+					verbinder1.insert(""+wertStufe+",'"+wertZweig+"',"+wertKlasse+",'"+wertFach+"',"+wertStunden+",'"+wertLehrer+"','"+wertRaum+"');");
+					verbinder1.retrieveForTable();
+					/*eintraegetabelle.setValueAt(comboBoxStufe.getSelectedItem(), 0, 0);
 				eintraegetabelle.setValueAt(comboBoxZweig.getSelectedItem(), 0, 1);
 				eintraegetabelle.setValueAt(comboBoxKlasse.getSelectedItem(), 0, 2);
 				eintraegetabelle.setValueAt(comboBoxFach.getSelectedItem(), 0, 3);
 				eintraegetabelle.setValueAt(comboBoxStunden.getSelectedItem(), 0, 4);
 				eintraegetabelle.setValueAt(comboBoxLehrer.getSelectedItem(), 0, 5);
-				eintraegetabelle.setValueAt(comboBoxRaum.getSelectedItem(), 0, 6);
+				*/eintraegetabelle.setValueAt(comboBoxRaum.getSelectedItem(), 0, 6);
+				} catch (ClassNotFoundException | SQLException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		frame.getContentPane().add(hinzufuegenButton);
