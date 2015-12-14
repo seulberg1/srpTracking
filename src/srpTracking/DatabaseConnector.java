@@ -23,6 +23,7 @@ public class DatabaseConnector {
 		conn.close();
 	}
 
+		//insert function
 	public void insert(String Eintrag) throws ClassNotFoundException, SQLException {
 		// Get Connection
 		Class.forName("org.h2.Driver");
@@ -40,7 +41,9 @@ public class DatabaseConnector {
 		ResultSet rs;
 		rs = stat.executeQuery("SELECT * FROM unterricht");
 		while (rs.next())
-			System.out.println(rs);
+			for (int i = 1;i<9;i++){
+				System.out.println(rs.getString(i));
+			}
 		id.close();
 		rs.close();
 		stat.close();

@@ -37,9 +37,7 @@ public class WindowLesson {
 				}
 			}
 		});
-		//Initialize Connection
-		DatabaseConnector verbinder1 = new DatabaseConnector();
-		verbinder1.insert("12,'Gym',3,'Mathe',4,'Kaps','Normal');");
+		
 	}
 
 	public WindowLesson() {
@@ -217,6 +215,24 @@ public class WindowLesson {
 		hinzufuegenButton.setBounds(852, 125, 90, 26);
 		hinzufuegenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Save selected values in variables
+				String wertStufe = (String)comboBoxStufe.getSelectedItem();
+				String wertZweig = (String)comboBoxZweig.getSelectedItem();
+				String wertKlasse = (String)comboBoxKlasse.getSelectedItem();
+				String wertFach = (String)comboBoxFach.getSelectedItem();
+				String wertStunden = (String)comboBoxStunden.getSelectedItem();
+				String wertLehrer = (String)comboBoxLehrer.getSelectedItem();
+				String wertRaum = (String)comboBoxRaum.getSelectedItem();
+				
+				//Connect to DATABASE
+				DatabaseConnector verbinder1;
+				try {
+					verbinder1 = new DatabaseConnector();
+				//ADD current values to DB
+					verbinder1.insert(wertStufe+",'"+wertZweig+"',"+wertKlasse+",'"+wertFach+"',"+wertStunden+",'"+wertLehrer+"','"+wertRaum+"');");
+				} catch (ClassNotFoundException | SQLException e1) {
+					e1.printStackTrace();
+				}
 				eintraegetabelle.setValueAt(comboBoxStufe.getSelectedItem(), 0, 0);
 				eintraegetabelle.setValueAt(comboBoxZweig.getSelectedItem(), 0, 1);
 				eintraegetabelle.setValueAt(comboBoxKlasse.getSelectedItem(), 0, 2);
